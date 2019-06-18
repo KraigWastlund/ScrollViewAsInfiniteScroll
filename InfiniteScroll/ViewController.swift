@@ -32,7 +32,18 @@ class ViewController: UIViewController {
         imageView3.translatesAutoresizingMaskIntoConstraints = false
         
         setConstraints()
+        print(repeatedString(s: "aba", n: 10))
     }
+    func repeatedString(s: String, n: Int) -> Int {
+        let lengthOfS = s.count
+        let baseMultiplier = n / s.count
+        let leftOverChars = n % s.count
+        let asInBase = String(repeating: s.filter { $0 == "a" }, count: baseMultiplier)
+        let asLeftOver = s[..<String.Index(encodedOffset: leftOverChars)].filter { $0 == "a" }
+        return asInBase.count + asLeftOver.count
+    }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
